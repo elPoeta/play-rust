@@ -1,5 +1,5 @@
 fn main() {
-    let str = String::from("Learning Rust lang");
+    let mut str = String::from("Learning Rust lang");
 
     println!("Length: {}", str.len());
 
@@ -17,4 +17,7 @@ fn main() {
         }
         println!("{}", c);
     }
+
+    str.push_str(" is AWESOME!!");
+    println!("{}", str);
 }
