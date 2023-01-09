@@ -16,4 +16,7 @@ fn witch_way(go: Direction) {
 fn main() {
     let go = Direction::Left;
     witch_way(go);
+    witch_way(Direction::Down);
+    witch_way(Direction::Right);
+    witch_way(Direction::Up);
 }
