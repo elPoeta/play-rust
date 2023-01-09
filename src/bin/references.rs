@@ -14,6 +14,16 @@ fn main() {
 
     print_point(&point);
     print_point(&point);
+
+    let mut n = 20;
+
+    {
+        let shadow = &mut n;
+
+        *shadow += 1;
+    }
+
+    println!("N: {}", n);
 }
 
 fn print_point(p: &Point) {
