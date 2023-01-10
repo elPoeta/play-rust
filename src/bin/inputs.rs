@@ -15,7 +15,12 @@ fn main() {
         .read_line(&mut age)
         .expect("Failed to read line");
 
-    let age: u32 = age.trim().parse().unwrap();
+    //let age: u32 = age.trim().parse().unwrap();
+
+    let age: u32 = match age.trim().parse() {
+        Ok(num) => num,
+        Err(_) => 0,
+    };
 
     println!(
         "My name is {} and i have {} years old.",
