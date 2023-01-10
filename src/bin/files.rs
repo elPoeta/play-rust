@@ -17,17 +17,16 @@ fn main() {
 }
 
 fn write_file(file_name: &String, extension: &String, content: &String) -> io::Result<()> {
-    let mut buffer = BufWriter::new(File::create(
-        [file_name.to_owned(), extension.to_owned()].join("."),
-    )?);
-
+    let path = [file_name.to_owned(), extension.to_owned()].join(".");
+    let mut buffer = BufWriter::new(File::create(path)?);
     buffer.write_all(content.as_bytes())?;
     buffer.flush()?;
     Ok(())
 }
 
 fn read_file(file_name: &String, extension: &String) -> io::Result<String> {
-    let file = File::open([file_name.to_owned(), extension.to_owned()].join("."))?;
+    let path = [file_name.to_owned(), extension.to_owned()].join(".");
+    let file = File::open(path)?;
     let reader = BufReader::new(file);
     let mut content = String::new();
     for line in reader.lines() {
