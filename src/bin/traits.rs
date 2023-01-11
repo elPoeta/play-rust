@@ -13,8 +13,8 @@ struct Profile {
 impl User for Profile {
     fn new(email: String, password: String) -> Profile {
         return Profile {
-            email,
-            password,
+            email: String::from(email),
+            password: String::from(password),
             confirmed: false,
             name: String::from(""),
         };
@@ -38,7 +38,9 @@ impl ToString for Profile {
 }
 
 fn main() {
-    let mut profile = Profile::new("elpoeta@gmail.com".to_string(), "123456".to_string());
+    let email = String::from("elpoeta@gmail.com");
+    let password = String::from("123456");
+    let mut profile = Profile::new(email, password);
 
     profile.name = String::from("Leonardo");
     println!("{}", profile.to_string());

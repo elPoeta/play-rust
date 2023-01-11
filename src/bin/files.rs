@@ -16,18 +16,19 @@ fn main() {
     }
 }
 
-fn write_file(file_name: &String, extension: &String, content: String) -> io::Result<()> {
+fn write_file(file_name: &str, extension: &str, content: String) -> io::Result<()> {
     //let path = [file_name.clone(), extension.clone()].join(".");
-    let path = file_name.to_string() + "." + extension;
+    let path = String::from(file_name) + "." + extension;
     let mut buffer = BufWriter::new(File::create(path)?);
     buffer.write_all(content.as_bytes())?;
     buffer.flush()?;
     Ok(())
 }
 
-fn read_file(file_name: &String, extension: &String) -> io::Result<String> {
+fn read_file(file_name: &str, extension: &str) -> io::Result<String> {
     //let path = [file_name.to_owned(), extension.to_owned()].join(".");
-    let path = file_name.to_owned() + "." + extension;
+    // let path = file_name.to_owned() + "." + extension;
+    let path = String::from(file_name) + "." + extension;
     let file = File::open(path)?;
     let reader = BufReader::new(file);
     let mut content = String::new();
